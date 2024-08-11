@@ -47,4 +47,6 @@ jobs:
           curl -sS -I "http://localhost:8000/"
 
       - name: Run Tests
-        run: vendor/bin/phpunit --bootstrap=./boot.php ./ --colors --testdox
+        run: |
+          cd test/ ; ls -la ./
+          vendor/bin/phpunit --bootstrap=./boot.php ./ --colors --testdox
