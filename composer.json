@@ -12,13 +12,6 @@
     "require-dev": {
         "phpunit/phpunit": ">=9.0"
     },
-    "To manipulate froq autoloader, change this field to \"autoload\"": {
-        "psr-4": {
-            "app\\controller\\": "app/system/controller",
-            "app\\repository\\": "app/system/repository",
-            "app\\entity\\": "app/system/entity"
-        }
-    },
     "minimum-stability": "stable",
     "scripts": {
         "explore": "php -f bin/explore.php --"
