@@ -1,0 +1,29 @@
+{
+    "name": "froq/sample",
+    "homepage": "http://github.com/froq/sample",
+    "description":  "Sample Froq! Application",
+    "keywords": ["froq", "sample"],
+    "license": "Apache-2.0",
+    "authors": [{"name": "Kerem Güneş"}],
+    "require": {
+        "php": "^8.2",
+        "froq/froq": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=9.0"
+    },
+    "To manipulate froq autoloader, change this field to \"autoload\"": {
+        "psr-4": {
+            "app\\controller\\": "app/system/controller",
+            "app\\repository\\": "app/system/repository",
+            "app\\entity\\": "app/system/entity"
+        }
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "explore": "php -f bin/explore.php --"
+    },
+    "scripts-descriptions": {
+        "explore": "Generates an autoload map for app/system & app/library folders (@see bin/explore.php)."
+    }
+}

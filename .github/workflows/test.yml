@@ -1,0 +1,50 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: ['*']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: ['8.2']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: json, curl, mbstring, sqlite3, gmp, xml
+
+      - name: Add / Update Locales # Locale en_US is supposed be there already?
+        run: sudo locale-gen en_US ; sudo locale-gen en_US.UTF-8 ; sudo update-locale
+
+      - name: Validate composer.json & composer.lock
+        run: composer validate --strict
+
+      - name: Cache Composer Packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run Server
+        run: |
+          echo "> Running Server: http://localhost:8000/" ; echo ""
+          php -S localhost:8000 bin/server.php &
+          echo "> Checking Server: http://localhost:8000/" ; echo ""
+          curl -sS -I "http://localhost:8000/"
+
+      - name: Run Tests
+        run: vendor/bin/phpunit --bootstrap=./boot.php ./ --colors --testdox
