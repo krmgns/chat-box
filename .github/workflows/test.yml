@@ -42,7 +42,7 @@ jobs:
       - name: Run Server
         run: |
           echo "> Running Server: http://localhost:8000/" ; echo ""
-          php -S localhost:8000 bin/server.php 2>/dev/null
+          php -S localhost:8000 bin/server.php 2>/dev/null &
 
       - name: Check Server
         run: |
