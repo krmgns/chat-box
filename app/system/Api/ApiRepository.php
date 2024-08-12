@@ -17,15 +17,9 @@ class ApiRepository extends Repository {
      * Create tables (if not exists).
      */
     function init(): void {
-        // $file = APP_DIR . '/var/sample.db';
-        // file_exists($file) && file_remove($file);
-
         $this->db->execute(
             file_read(__DIR__ . '/data/schema/db.sql')
         );
-
-        // $res = $this->db->query("SELECT * FROM sqlite_master WHERE type='table'");
-        // prd($res,1);
     }
 
     /**
