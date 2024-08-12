@@ -43,10 +43,11 @@ jobs:
         run: |
           echo "> Running Server: http://localhost:8000/" ; echo ""
           php -S localhost:8000 bin/server.php 2>1/dev/null & exit
+
+      - name: Check Server
+        run: |
           echo "> Checking Server: http://localhost:8000/" ; echo ""
           curl -sS -I "http://localhost:8000/"
 
       - name: Run Tests
-        run: |
-          cd test/ ; ls -la ./
-          ../vendor/bin/phpunit --bootstrap=./boot.php ./ --colors --testdox
+        run: vendor/bin/phpunit --bootstrap=test/boot.php test/ --colors --testdox
