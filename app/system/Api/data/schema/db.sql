@@ -22,7 +22,6 @@ CREATE TABLE IF NOT EXISTS "chat" (
     "created_at"    DATETIME        NOT NULL,
     "updated_at"    DATETIME
 
-    -- Same.
     -- FOREIGN KEY ("pid") REFERENCES "chat" ("id")
     -- FOREIGN KEY ("sid") REFERENCES "subscription" ("id")
 );

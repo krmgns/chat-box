@@ -1,7 +1,5 @@
 <?php
-/**
- * Define your services here..
- */
+
 return [
     // 'hello' => ['app\library\Hello', 'World'],
     // or

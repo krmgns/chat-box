@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 use froq\http\response\Status;
 
 class AppTest extends TestCase
